@@ -1,16 +1,16 @@
 export default class Materiais{
 
     #codigo;
-    #quantidade;
     #valor;
     #descricao;
+    #urlImagem;
 
-    constructor(codigo, quantidade, valor, descricao = []){
+    constructor(codigo, descricao = [], valor, urlImagem){
 
         this.#codigo = codigo;
-        this.#quantidade = quantidade;
         this.#valor = valor;
         this.#descricao = descricao;
+        this.#urlImagem = imagem;
     }
 
     get codigo(){
@@ -19,14 +19,6 @@ export default class Materiais{
 
     set codigo(novoCodigo){
         this.#codigo = novoCodigo;
-    }
-
-    get quantidade(){
-        return this.#quantidade;
-    }
-
-    set quantidade(novaQuantidade){
-        this.#quantidade = novaQuantidade;
     }
 
     get valor(){
@@ -45,12 +37,20 @@ export default class Materiais{
         this.#descricao = novaDescricao;
     }
 
+    get urlImagem(){
+        return this.#urlImagem;
+    }
+
+    set urlImagem(novaImagem){
+        this.#urlImagem = novaImagem;
+    }
+
     toJSon(){
         return {
             'codigo' : this.#codigo,
-            'quantidade' : this.#quantidade,
             'valor' : this.#valor,
-            'descricao' : this.#descricao
+            'descricao' : this.#descricao,
+            'urlImagem' : this.#urlImagem
         }
     }
 }
