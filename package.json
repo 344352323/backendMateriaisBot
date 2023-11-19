@@ -1,0 +1,16 @@
+{
+  "name": "backendmateriaisbot",
+  "version": "1.0.0",
+  "description": "Backend para sustentar chatbot",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Santiago",
+  "license": "ISC",
+  "dependencies": {
+    "mysql2": "^3.6.3"
+  }
+}

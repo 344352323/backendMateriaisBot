@@ -1,3 +1,5 @@
+import MateriaisDAO from "../Persistencia/materiaisDAO.js";
+
 export default class Materiais{
 
     #codigo;
@@ -5,12 +7,12 @@ export default class Materiais{
     #descricao;
     #urlImagem;
 
-    constructor(codigo, descricao = [], valor, urlImagem){
+    constructor(codigo, descricao, valor, urlImagem){
 
         this.#codigo = codigo;
         this.#valor = valor;
         this.#descricao = descricao;
-        this.#urlImagem = imagem;
+        this.#urlImagem = urlImagem;
     }
 
     get codigo(){
@@ -41,8 +43,8 @@ export default class Materiais{
         return this.#urlImagem;
     }
 
-    set urlImagem(novaImagem){
-        this.#urlImagem = novaImagem;
+    set urlImagem(novaurlImagem){
+        this.#urlImagem = novaurlImagem;
     }
 
     toJSon(){
@@ -53,4 +55,26 @@ export default class Materiais{
             'urlImagem' : this.#urlImagem
         }
     }
+
+    async gravar(){
+        const materiaisDAO = new MateriaisDAO();
+        await materiaisDAO.gravar(this);
+    }
+
+    async atualizar(){
+        const materiaisDAO = new MateriaisDAO();
+        await materiaisDAO.atualizar(this);
+    }
+
+    async excluir(){
+        const materiaisDAO = new MateriaisDAO();
+        await materiaisDAO.excluir;
+    }
+
+    async consultar(){
+        const materiaisDAO = new MateriaisDAO();
+        return await materiaisDAO.consultar();
+    }
+
+    
 }
