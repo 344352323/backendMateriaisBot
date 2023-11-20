@@ -43,7 +43,7 @@ export default class MateriaisDAO{
         const [registros, campos] = await conexao.execute(sql);
         let listaMateriais = [];
         for (const registro of registros){
-            const material = new Materiais(registro.codigo, registro.valor, registro.descricao, registro.urlImagem);
+            const material = new Materiais(registro.codigo, registro.descricao, registro.valor, registro.urlImagem);
             listaMateriais.push(material);
         }
         global.poolConexoes.releaseConnection(conexao);

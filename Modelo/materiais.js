@@ -10,8 +10,8 @@ export default class Materiais{
     constructor(codigo, descricao, valor, urlImagem){
 
         this.#codigo = codigo;
-        this.#valor = valor;
         this.#descricao = descricao;
+        this.#valor = valor;
         this.#urlImagem = urlImagem;
     }
 
@@ -35,7 +35,7 @@ export default class Materiais{
         return this.#descricao;
     }
 
-    set valor(novaDescricao){
+    set descricao(novaDescricao){
         this.#descricao = novaDescricao;
     }
 
@@ -50,8 +50,8 @@ export default class Materiais{
     toJSon(){
         return {
             'codigo' : this.#codigo,
-            'valor' : this.#valor,
             'descricao' : this.#descricao,
+            'valor' : this.#valor,
             'urlImagem' : this.#urlImagem
         }
     }
