@@ -1,3 +1,4 @@
+/*
 import Materiais from "./Modelo/materiais.js";
 
 let material1 = new Materiais(0, "Argamassa", 20, 'https://cdn.leroymerlin.com.br/products/argamassa_aciii_interno_e_externo_branco_20kg_87912153_3a2d_600x600.jpg');
@@ -13,4 +14,20 @@ for (const materiais of listaMateriais) {
     }).catch((erro) => {
         console.log(erro);
     });
-}
+};
+*/
+
+import express from 'express';
+import rotaDialogFlow from './rotas/rotaDialogFlow.js';
+
+
+const host = '0.0.0.0';
+const porta = 3500;
+
+const app = express();
+app.use(express.json());
+app.use('/dialogFlow', rotaDialogFlow);
+
+app.listen(porta, host, () => {
+    console.log(`Servidor rodando em http://${host}:${porta}`);
+})

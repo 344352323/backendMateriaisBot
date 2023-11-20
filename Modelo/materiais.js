@@ -75,6 +75,4 @@ export default class Materiais{
         const materiaisDAO = new MateriaisDAO();
         return await materiaisDAO.consultar();
     }
-
-    
 }
