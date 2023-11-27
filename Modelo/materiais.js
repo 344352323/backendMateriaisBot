@@ -71,8 +71,8 @@ export default class Materiais{
         await materiaisDAO.excluir;
     }
 
-    async consultar(){
+    async consultar(termoBusca){
         const materiaisDAO = new MateriaisDAO();
-        return await materiaisDAO.consultar();
+        return await materiaisDAO.consultar(termoBusca);
     }
 }

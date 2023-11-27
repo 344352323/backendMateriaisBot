@@ -36,9 +36,14 @@ export default class MateriaisDAO{
 
     }
 
-    async consultar(){
-
-        const sql = `SELECT * FROM material`;
+    async consultar(termoBusca){
+        let sql = "";
+        if(termoBusca){
+            sql =  `SELECT * FROM material WHERE descricao LIKE'%${termoBusca}'`;
+        }
+        else{
+            sql = `SELECT * FROM material`;
+        }
         const conexao = await conectar();
         const [registros, campos] = await conexao.execute(sql);
         let listaMateriais = [];
