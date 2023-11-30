@@ -97,21 +97,25 @@ export default class DialogFlowCtrl {
                 }
             }
             else if(intencao === "RegistroLocalEntrega"){
-                const materiais = requisicao.body.queryResult.outputConstexts[0].parameters.material;
-                const qtds = requisicao.body.queryResult.outputConstexts[0].parameters.material;
+                let materiais = [];
+                let qtds = [];
+                for(const contexto of requisicao.body.queryResult.outputContexts){
+                   if(contexto.parameters.material){
+                     materiais = contexto.parameters.material;
+                     qtds = contexto.parameters.material;
+                   }
+                }
                 const dataHoje = new Date ().toLocaleDateString();
                 let itensPedido = [];
                 for(let i=0; i<materiais.length; i++){
-                    const objMaterial = new Materiais();
-                    const materialEncontrado = objMaterial.consultar(material[i])[0];
-                    if(materialEncontrado){
-                        itensPedido.push({
-                        "codigo":materialEncontrado.codigo,
+                    itensPedido.push({
+                        "codigo":0,
+                        "material": materiais[i],
                         "qtd": qtds[i]
                     })
-                    }
+                    
                 }
-                const enderecoEntrega = `Rua: ${requisicao.body.queryResult.parameters.location.street-address}`;
+                const enderecoEntrega = `Rua: ${requisicao.body.queryResult.parameters.location['street-address']}`;
                 const pedido = new Pedido(0,dataHoje,itensPedido);
                 pedido.gravar().then(()=>{
                     if(origem){
